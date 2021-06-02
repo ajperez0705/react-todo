@@ -1,3 +1,5 @@
+import styles from "./Form.module.css";
+
 const Form = (props) => {
   const inputHandler = function (e) {
     props.setInput(e.target.value);
@@ -10,9 +12,15 @@ const Form = (props) => {
   };
 
   return (
-    <form action="">
-      <input value={props.input} onChange={inputHandler} type="text" />
-      <button onClick={submitHandler} className="form-btn">
+    <form className={styles.form} action="">
+      <input
+        className={styles.input}
+        placeholder="Create a new todo..."
+        value={props.input}
+        onChange={inputHandler}
+        type="text"
+      />
+      <button onClick={submitHandler} className={styles["form-btn"]}>
         Submit
       </button>
     </form>

@@ -1,0 +1,9 @@
+.todo-card {
+  display: flex;
+  text-align: left;
+}
+
+.complete-btn {
+  border-radius: 50%;
+  background-color: teal;
+}

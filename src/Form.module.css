@@ -1,0 +1,32 @@
+.form {
+  padding: 0 8px;
+}
+
+.input {
+  border: none;
+  border-bottom: rgba(49, 49, 49, 0.411) 1px solid;
+  background-color: rgba(238, 238, 238, 0.082);
+  height: 32px;
+  padding: 4px;
+}
+
+.input:focus {
+  border: white;
+}
+
+.form-btn {
+  height: 32px;
+  border: none;
+  background-color: rgb(138, 189, 248);
+
+  color: white;
+  padding: 4px 8px;
+  font-family: mabry;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-btn:hover {
+  background-color: rgb(94, 162, 240);
+  transition: ease-in-out 0.3s;
+}

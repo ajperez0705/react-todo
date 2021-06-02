@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 
-import "./App.css";
 import Form from "./Form";
 import Filter from "./Filter";
 import TodoList from "./TodoList";
+
+import styles from "./App.module.css";
 
 function App() {
   // State
@@ -64,30 +65,36 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="title">Title</div>
-      <div className="user-input">
-        <Form createTodo={createTodo} input={input} setInput={setInput} />
+    <div className={styles.container}>
+      <div className={styles.title}>My Todo App</div>
+      <div className={styles["user-input"]}>
+        <Form
+          className={styles["user-input-child"]}
+          createTodo={createTodo}
+          input={input}
+          setInput={setInput}
+        />
         <Filter
+          className={styles["user-input-child"]}
           status={status}
           setStatus={setStatus}
           renderFilter={renderFilteredTodos}
         />
-
-        {filteredTodos.map((todo) => {
-          return (
-            <TodoList
-              // Props
-              todos={todos}
-              todo={todo}
-              // Value
-              name={todo.name}
-              key={todo.id}
-              completed={todo.completed}
-            />
-          );
-        })}
       </div>
+
+      {filteredTodos.map((todo) => {
+        return (
+          <TodoList
+            // Props
+            todos={todos}
+            todo={todo}
+            // Value
+            name={todo.name}
+            key={todo.id}
+            completed={todo.completed}
+          />
+        );
+      })}
     </div>
   );
 }

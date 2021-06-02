@@ -1,3 +1,5 @@
+import styles from "./TodoList.module.css";
+
 const TodoList = (props) => {
   const completedTodoHandler = function (e) {
     console.log(props.todo);
@@ -22,14 +24,16 @@ const TodoList = (props) => {
   //   };
 
   return (
-    <div className="todo-card">
+    <div className={styles["todo-card"]}>
       <button
         onClick={completedTodoHandler}
-        className={`complete-btn ${props.completed ? "completed" : ""}`}
+        className={`styles["complete-btn"] ${
+          props.completed ? "completed" : ""
+        }`}
       >
         ✔
       </button>
-      <div className="todo-text">{props.name}</div>
+      <div className={styles["completed-todo-text"]}>{props.name}</div>
     </div>
   );
 };
