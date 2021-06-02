@@ -2,11 +2,11 @@ import styles from "./TodoList.module.css";
 
 const TodoList = (props) => {
   const completedTodoHandler = function (e) {
-    console.log(props.todo);
-
     props.todo.completed = true;
 
-    // props.todos.filter((el) => el.id !== props.todo.id);
+    console.log(e);
+
+    props.todos.filter((el) => el.id !== props.todo.id);
   };
 
   //   Dev Ed Solution
@@ -27,13 +27,18 @@ const TodoList = (props) => {
     <div className={styles["todo-card"]}>
       <button
         onClick={completedTodoHandler}
-        className={`styles["complete-btn"] ${
-          props.completed ? "completed" : ""
-        }`}
+        className={`${styles["complete-btn"]} ${
+          props.completed === true ? styles["completed-todo-btn"] : ""
+        } `}
       >
         ✔
       </button>
-      <div className={styles["completed-todo-text"]}>{props.name}</div>
+      <div
+        className={`${styles["todo-text"]} 
+        ${props.completed === true ? styles.completed : ""}`}
+      >
+        {props.name}
+      </div>
     </div>
   );
 };

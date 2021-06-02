@@ -8,6 +8,8 @@ const Form = (props) => {
   const submitHandler = function (e) {
     e.preventDefault();
 
+    if (props.input === "") return;
+
     props.createTodo(props.input);
   };
 

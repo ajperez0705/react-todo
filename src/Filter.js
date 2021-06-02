@@ -13,9 +13,9 @@ const Filter = (props) => {
       name="filtered-todos"
       id=""
     >
-      <option value="All">All</option>
-      <option value="Completed">Completed</option>
       <option value="Incomplete">Incomplete</option>
+      <option value="Completed">Completed</option>
+      <option value="All">All</option>
     </select>
   );
 };

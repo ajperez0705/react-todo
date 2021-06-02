@@ -10,8 +10,9 @@ function App() {
   // State
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
-  const [status, setStatus] = useState("All");
+  const [status, setStatus] = useState("Incomplete");
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [completionStatus, setCompletionStatus] = useState([]);
 
   // This Use Effect runs on Init
   useEffect(() => {

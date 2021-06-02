@@ -4,6 +4,7 @@
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: mabry;
+  max-width: 700px;
 }
 
 @font-face {
@@ -14,8 +15,8 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   margin: 100px 50px;
@@ -29,12 +30,13 @@
 .title {
   font-family: mabry;
   font-size: 2em;
+  text-align: center;
 }
 
 .user-input {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 24px 8px;
 }
 
