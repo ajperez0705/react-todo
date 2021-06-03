@@ -13,14 +13,13 @@ const TodoList = (props) => {
   const deleteTodoHandler = function (e) {
     e.preventDefault();
 
-    console.log(props.todo);
-
     for (let i = 0; i < props.todos.length; i++) {
       if (props.todos[i].id === props.todo.id) {
         props.todos.splice(i, 1);
       }
       resetFilteredTodos();
       props.saveLocalTodos();
+      props.errorHandler();
       // console.log(props.filteredTodos);
     }
   };

@@ -11,6 +11,8 @@ const Form = (props) => {
     if (props.input === "") return;
 
     props.createTodo(props.input);
+
+    props.errorHandler();
   };
 
   return (

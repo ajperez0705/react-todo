@@ -5,6 +5,7 @@ import Filter from "./Filter";
 import TodoList from "./TodoList";
 
 import styles from "./App.module.css";
+import ErrorMessage from "./ErrorMessage";
 
 function App() {
   // State
@@ -12,17 +13,19 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("Incomplete");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [completionStatus, setCompletionStatus] = useState([]);
+  const [error, setError] = useState();
 
   // This Use Effect runs on Init
   useEffect(() => {
     getLocalTodos();
+    errorHandler();
   }, []);
 
   // Use Effect
   useEffect(() => {
     renderFilteredTodos();
     saveLocalTodos();
+    errorHandler();
   }, [todos, status]);
 
   // Functions
@@ -32,7 +35,7 @@ function App() {
       { name: userInput, id: Math.random() * 10, completed: false },
     ]);
     setInput("");
-    console.log(todos);
+    errorHandler();
   };
 
   const renderFilteredTodos = function () {
@@ -64,6 +67,22 @@ function App() {
     }
   };
 
+  const errorHandler = () => {
+    if (todos.length === 0) {
+      setError({
+        message: "There are no todos, create one!",
+      });
+    } else if (todos.length > 0) {
+      setError(null);
+    }
+
+    // if (input === "") {
+    //   setError({
+    //     message: "You need to have a minimum of 1 character!",
+    //   });
+    // } else return;
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>My Todo App</div>
@@ -73,6 +92,7 @@ function App() {
           createTodo={createTodo}
           input={input}
           setInput={setInput}
+          errorHandler={errorHandler}
         />
         <Filter
           className={styles["user-input-child"]}
@@ -86,6 +106,7 @@ function App() {
         return (
           <TodoList
             // Props
+            errorHandler={errorHandler}
             saveLocalTodos={saveLocalTodos}
             filterStatus={status}
             setFilteredTodos={setFilteredTodos}
@@ -99,6 +120,7 @@ function App() {
           />
         );
       })}
+      {error && <ErrorMessage message={error.message} />}
     </div>
   );
 }
