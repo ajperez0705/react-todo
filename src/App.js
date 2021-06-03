@@ -21,7 +21,6 @@ function App() {
 
   // Use Effect
   useEffect(() => {
-    console.log("effect called");
     renderFilteredTodos();
     saveLocalTodos();
   }, [todos, status]);
@@ -36,7 +35,7 @@ function App() {
     console.log(todos);
   };
 
-  const renderFilteredTodos = function (filterValue) {
+  const renderFilteredTodos = function () {
     switch (status) {
       case "Completed":
         setFilteredTodos(todos.filter((todo) => todo.completed === true));
@@ -87,6 +86,10 @@ function App() {
         return (
           <TodoList
             // Props
+            saveLocalTodos={saveLocalTodos}
+            filterStatus={status}
+            setFilteredTodos={setFilteredTodos}
+            filteredTodos={filteredTodos}
             todos={todos}
             todo={todo}
             // Value
