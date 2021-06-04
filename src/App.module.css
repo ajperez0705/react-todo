@@ -4,7 +4,6 @@
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: mabry;
-  max-width: 700px;
 }
 
 @font-face {
@@ -15,14 +14,18 @@
 }
 
 .container {
-  /* display: flex; */
-  /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
-  margin: 100px 50px;
+  position: absolute;
+  top: 10%;
+
+  left: 0;
+  right: 0;
+  margin: auto;
   width: auto;
+  max-width: 700px;
+  height: auto;
+
   /* border: rgba(255, 255, 255, 0.137); */
-  padding: 40px;
+  padding: 40px 150px;
   border-radius: 20px;
   box-shadow: 0px 0px 15px 0px rgba(53, 52, 52, 0.205);
 }
@@ -36,7 +39,7 @@
 .user-input {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 24px 8px;
 }
 

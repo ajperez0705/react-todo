@@ -19,7 +19,7 @@ const TodoList = (props) => {
       }
       resetFilteredTodos();
       props.saveLocalTodos();
-      props.errorHandler();
+      props.errorFilterHandler();
       // console.log(props.filteredTodos);
     }
   };

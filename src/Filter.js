@@ -12,6 +12,7 @@ const Filter = (props) => {
       onChange={filterHandler}
       name="filtered-todos"
       id=""
+      value={props.status}
     >
       <option value="Incomplete">Incomplete</option>
       <option value="Completed">Completed</option>

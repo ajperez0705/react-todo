@@ -13,19 +13,19 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("Incomplete");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [error, setError] = useState();
+  const [error, setError] = useState("modal");
 
   // This Use Effect runs on Init
   useEffect(() => {
     getLocalTodos();
-    errorHandler();
+    errorFilterHandler();
   }, []);
 
   // Use Effect
   useEffect(() => {
     renderFilteredTodos();
     saveLocalTodos();
-    errorHandler();
+    errorFilterHandler();
   }, [todos, status]);
 
   // Functions
@@ -35,21 +35,24 @@ function App() {
       { name: userInput, id: Math.random() * 10, completed: false },
     ]);
     setInput("");
-    errorHandler();
+    // errorFilterHandler();
   };
 
   const renderFilteredTodos = function () {
     switch (status) {
       case "Completed":
         setFilteredTodos(todos.filter((todo) => todo.completed === true));
+        if (filteredTodos.length === 0) {
+          setError({
+            message: "You have not completed any tasks! Go get something done!",
+          });
+        }
         break;
-
       case "Incomplete":
         setFilteredTodos(todos.filter((todo) => todo.completed === false));
         break;
       default:
         setFilteredTodos(todos);
-        console.log("Default");
     }
   };
 
@@ -67,11 +70,13 @@ function App() {
     }
   };
 
-  const errorHandler = () => {
+  const errorFilterHandler = () => {
     if (todos.length === 0) {
       setError({
         message: "There are no todos, create one!",
       });
+      console.log(filteredTodos);
+      return;
     } else if (todos.length > 0) {
       setError(null);
     }
@@ -92,7 +97,9 @@ function App() {
           createTodo={createTodo}
           input={input}
           setInput={setInput}
-          errorHandler={errorHandler}
+          errorFilterHandler={errorFilterHandler}
+          status={status}
+          setStatus={setStatus}
         />
         <Filter
           className={styles["user-input-child"]}
@@ -106,7 +113,7 @@ function App() {
         return (
           <TodoList
             // Props
-            errorHandler={errorHandler}
+            errorFilterHandler={errorFilterHandler}
             saveLocalTodos={saveLocalTodos}
             filterStatus={status}
             setFilteredTodos={setFilteredTodos}
@@ -121,6 +128,7 @@ function App() {
         );
       })}
       {error && <ErrorMessage message={error.message} />}
+      {/* <Modal message={error.message} /> */}
     </div>
   );
 }
