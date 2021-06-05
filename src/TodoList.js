@@ -53,21 +53,27 @@ const TodoList = (props) => {
 
   return (
     <div className={styles["todo-card"]}>
-      <button
-        onClick={completedTodoHandler}
-        className={`${styles["complete-btn"]} ${
-          props.completed === true ? styles["completed-todo-btn"] : ""
-        } `}
-      >
-        ✔
-      </button>
-      <div
-        className={`${styles["todo-text"]} 
+      <div className={styles["todo-card-left"]}>
+        <button
+          onClick={completedTodoHandler}
+          className={`${styles["complete-btn"]} ${
+            props.completed === true ? styles["completed-todo-btn"] : ""
+          } `}
+        >
+          ✔
+        </button>
+        <div
+          className={`${styles["todo-text"]} 
         ${props.completed === true ? styles.completed : ""}`}
-      >
-        {props.name}
+        >
+          {props.name}
+        </div>
       </div>
-      <button onClick={deleteTodoHandler}>Delete</button>
+      <div className={styles["todo-card-right"]}>
+        <button className={styles["todo-btn"]} onClick={deleteTodoHandler}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 };

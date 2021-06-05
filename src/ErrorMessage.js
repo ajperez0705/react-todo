@@ -1,7 +1,9 @@
+import style from "./ErrorMessage.module.css";
+
 const ErrorMessage = (props) => {
   return (
-    <div>
-      <h4>{props.message}</h4>
+    <div className={style["error-container"]}>
+      <h4 className={style["error-message"]}>{props.message}</h4>
     </div>
   );
 };

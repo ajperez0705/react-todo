@@ -18,7 +18,7 @@
 }
 
 .header {
-  background: #4f005f;
+  background-color: rgb(138, 189, 248);
   padding: 1rem;
 }
 
@@ -42,4 +42,21 @@
     left: calc(50% - 20rem);
     width: 40rem;
   }
+}
+
+.modal-btn {
+  height: 32px;
+  border: none;
+  background-color: rgb(138, 189, 248);
+
+  color: white;
+  padding: 4px 8px;
+  font-family: mabry;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-btn:hover {
+  background-color: rgb(94, 162, 240);
+  transition: ease-in-out 0.3s;
 }

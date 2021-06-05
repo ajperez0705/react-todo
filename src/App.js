@@ -13,7 +13,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("Incomplete");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [error, setError] = useState("modal");
+  const [error, setError] = useState();
 
   // This Use Effect runs on Init
   useEffect(() => {
@@ -38,22 +38,52 @@ function App() {
     // errorFilterHandler();
   };
 
-  const renderFilteredTodos = function () {
-    switch (status) {
-      case "Completed":
-        setFilteredTodos(todos.filter((todo) => todo.completed === true));
-        if (filteredTodos.length === 0) {
-          setError({
-            message: "You have not completed any tasks! Go get something done!",
-          });
-        }
-        break;
-      case "Incomplete":
-        setFilteredTodos(todos.filter((todo) => todo.completed === false));
-        break;
-      default:
-        setFilteredTodos(todos);
+  // const renderFilteredTodos = function () {
+  //   switch (status) {
+  //     case "Completed":
+  //       setFilteredTodos(todos.filter((todo) => todo.completed === true));
+  //       if (filteredTodos.length === 0) {
+  //         setError({
+  //           message: "You have not completed any tasks! Go get something done!",
+  //         });
+  //       }
+  //       console.log("complete called");
+  //       break;
+  //     case "Incomplete":
+  //       setFilteredTodos(todos.filter((todo) => todo.completed === false));
+  //       if (filteredTodos.length === 1) {
+  //         setError({
+  //           message: "You have not completed any tasks! Go get something done!",
+  //         });
+  //       }
+  //       // console.log(error.message);
+  //       break;
+  //     default:
+  //       setFilteredTodos(todos);
+  //   }
+  // };
+
+  const renderFilteredTodos = function (e) {
+    console.log(e);
+    if (status === "Completed") {
+      setFilteredTodos(todos.filter((todo) => todo.completed === true));
+      if (filteredTodos.length === 0) {
+        setError({
+          message: "You have not completed any tasks! Go get something done!",
+        });
+      }
+      console.log("complete called");
+    } else if (status === "Incomplete") {
+      setFilteredTodos(todos.filter((todo) => todo.completed === false));
+      if (filteredTodos.length === 1) {
+        setError({
+          message: "You have not completed any tasks! Go get something done!",
+        });
+      }
+      console.log("incomplete called");
     }
+    // console.log(error.message);
+    else setFilteredTodos(todos);
   };
 
   // Save to Local Storage
@@ -75,11 +105,16 @@ function App() {
       setError({
         message: "There are no todos, create one!",
       });
-      console.log(filteredTodos);
       return;
     } else if (todos.length > 0) {
       setError(null);
     }
+
+    // const filterErrorHandler = () => {
+    //   setError({
+    //     message: "You have not completed any tasks! Go get something done!",
+    //   });
+    // };
 
     // if (input === "") {
     //   setError({

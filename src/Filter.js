@@ -3,7 +3,7 @@ import styles from "./Filter.module.css";
 const Filter = (props) => {
   const filterHandler = function (e) {
     props.setStatus(e.target.value);
-    props.renderFilter();
+    props.renderFilter(e);
   };
 
   return (

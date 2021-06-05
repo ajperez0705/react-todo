@@ -22,7 +22,9 @@ const Modal = (props) => {
               <p>{props.message}</p>
             </div>
             <footer className={style.actions}>
-              <button onClick={onConfirmHandler}>Okay</button>
+              <button className={style["modal-btn"]} onClick={onConfirmHandler}>
+                Okay
+              </button>
             </footer>
           </Card>
         </div>
